@@ -84,7 +84,9 @@ threshold = 0.5
 # Modell erstellen
 model = Sequential([
     GRU(hidden_size, input_shape=(301, input_size), return_sequences=True),
+    GRU(hidden_size, return_sequences=True),
     GRU(hidden_size, return_sequences=False),
+    Dense(hidden_size, input_shape=(hidden_size,), activation='relu'),
     Dense(hidden_size, input_shape=(hidden_size,), activation='relu'),
     Dense(num_classes, activation='sigmoid')
 ])
